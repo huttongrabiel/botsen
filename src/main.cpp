@@ -6,7 +6,8 @@
 
 #include "object.h"
 
-constexpr int circle_radius = 80;
+constexpr int circle_radius = 40;
+constexpr int ball_velocity = 20;
 
 int main() {
     int screen_width = 800;
@@ -28,18 +29,26 @@ int main() {
         BeginDrawing();
         ClearBackground(WHITE);
 
+        bool have_collided = CheckCollisionCircles(
+                {static_cast<float>(circle_1_pos.x), static_cast<float>(circle_1_pos.y)},
+                circle_radius,
+                {static_cast<float>(circle_2_pos.x), static_cast<float>(circle_2_pos.y)},
+                circle_radius);
+
+
         // Move the balls away from one another
-        if (circle_1_pos.x+circle_radius == screen_width && circle_2_pos.x-circle_radius == 0) {
+        if ((circle_1_pos.x+circle_radius == screen_width && circle_2_pos.x-circle_radius == 0)
+                || have_collided) {
             towards = -1;
         // Move the balls towards one another
-        } else if (circle_1_pos.x-circle_radius == 0 && circle_2_pos.x+circle_radius == screen_width) {
+        } else if (circle_1_pos.x-circle_radius <= 0 && circle_2_pos.x+circle_radius >= screen_width) {
             towards = 1;
         }
 
-        circle_1_pos.x += towards*2;
-        circle_2_pos.x -= towards*2;
-        DrawCircle(circle_1_pos.x, circle_1_pos.y, 80, RED);
-        DrawCircle(circle_2_pos.x, circle_2_pos.y, 80, BLUE);
+        circle_1_pos.x += towards * ball_velocity;
+        circle_2_pos.x -= towards * ball_velocity;
+        DrawCircle(circle_1_pos.x, circle_1_pos.y, circle_radius, RED);
+        DrawCircle(circle_2_pos.x, circle_2_pos.y, circle_radius, BLUE);
 
         EndDrawing();
     }
