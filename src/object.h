@@ -5,6 +5,11 @@ struct ObjPos {
     int y;
 };
 
+struct ObjVelocity {
+    int x_velocity;
+    int y_velocity;
+};
+
 class Object {
 public:
     Object();
@@ -15,8 +20,8 @@ private:
                         {1, 1, 1},
                         {0, 1, 0} };
     int _mass;
-    int _velocity;
     ObjPos _pos;
+    ObjVelocity _velocity;
 };
 
 }
