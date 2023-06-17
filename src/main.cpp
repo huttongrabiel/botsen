@@ -12,6 +12,8 @@ int main() {
 
     std::vector<Object::Object> active_objects;
 
+    InitWindow(screen_width, screen_height, "Botsen");
+
     SetTargetFPS(60);
 
     // For starting test purposes we will not render custom objects but instead
