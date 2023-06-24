@@ -19,9 +19,9 @@ make -j
 ```
 
 # TODO
-- [ ] Add support for elastic collisions
+- [X] Add support for elastic collisions
 - [ ] Add support for inelastic collisions
 - [ ] Add support for totally inelastic collisions
 - [ ] Allow user to specify collision type before beginning collision
 - [ ] Allow user to 'throw', using mouse, balls at one another to cause collision
-- [ ] Keep balls within the frame and have them bounce of the sides
+- [X] Keep balls within the frame and have them bounce of the sides
