@@ -10,4 +10,16 @@ raylibCircleExt::raylibCircleExt(int direction_of_travel, int velocity,  int rad
 
 raylibCircleExt::~raylibCircleExt() {}
 
+void raylibCircleExt::update_circle_center(Object::ObjPos new_center) {
+    _circle_center = new_center;
+}
+
+void raylibCircleExt::set_velocity(int new_velocity) {
+    _velocity = new_velocity;
+}
+
+void raylibCircleExt::set_direction_of_travel(int direction) {
+    _direction_of_travel = direction;
+}
+
 }
