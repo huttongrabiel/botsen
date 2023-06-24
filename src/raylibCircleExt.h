@@ -1,12 +1,13 @@
 #pragma once
 
 #include <raylib.h>
+#include <object.h>
 
 namespace RaylibExt {
 
 class raylibCircleExt {
 public:
-    raylibCircleExt(int direction_of_travel, int velocity, int radius, Vector2 center);
+    raylibCircleExt(int direction_of_travel, int velocity, int radius, Object::ObjPos center);
     ~raylibCircleExt();
     void change_direction_of_travel() { _direction_of_travel *= -1; };
 
@@ -15,7 +16,7 @@ private:
     int _direction_of_travel;
     int _velocity;
     int _radius;
-    Vector2 _center;
+    Object::ObjPos _circle_center;
 };
 
 }
