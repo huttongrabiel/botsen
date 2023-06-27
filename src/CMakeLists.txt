@@ -13,6 +13,7 @@ set(CMAKE_CXX_FLAGS)
 add_library(BotsenCore SHARED
     ${CMAKE_CURRENT_SOURCE_DIR}/object.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/raylibCircleExt.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collisions.cpp
     )
 target_include_directories(BotsenCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
