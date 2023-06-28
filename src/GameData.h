@@ -7,10 +7,17 @@ enum class Scenes {
     COLLISION
 };
 
+enum class CollisionType {
+    ELASTIC,
+    INELASTIC,
+    TOTALLY_INELASTIC
+};
+
 struct Game {
     int screen_width;
     int screen_height;
-    GameData::Scenes current_scene = GameData::Scenes::HOME;
+    Scenes current_scene = GameData::Scenes::HOME;
+    CollisionType current_collision_type = CollisionType::ELASTIC;
 };
 
 }
