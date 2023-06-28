@@ -14,7 +14,7 @@ add_library(BotsenCore SHARED
     ${CMAKE_CURRENT_SOURCE_DIR}/Object.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/RaylibCircleExt.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/Collisions.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/Scenes.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/UI.cpp
     )
 target_include_directories(BotsenCore PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

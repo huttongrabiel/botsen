@@ -7,7 +7,7 @@
 #include <Object.h>
 #include <RaylibCircleExt.h>
 #include <Collisions.h>
-#include <Scenes.h>
+#include <UI.h>
 #include <GameData.h>
 
 constexpr int circle_radius = 40;
@@ -43,7 +43,7 @@ int main() {
             case GameData::Scenes::HOME:
                 break;
             case GameData::Scenes::COLLISION:
-                Scenes::update_and_draw_circles(active_game, circle_1, circle_2);
+                UI::update_and_draw_circles(active_game, circle_1, circle_2);
         }
 
         EndDrawing();

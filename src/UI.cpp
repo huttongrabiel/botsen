@@ -1,9 +1,9 @@
 #include <raylib.h>
 
 #include <Collisions.h>
-#include <Scenes.h>
+#include <UI.h>
 
-namespace Scenes {
+namespace UI {
 
 void update_and_draw_circles(const GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
     bool have_collided = CheckCollisionCircles(
