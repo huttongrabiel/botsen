@@ -13,6 +13,33 @@ constexpr int ball_velocity = 5;
 constexpr int screen_width = 800;
 constexpr int screen_height = 600;
 
+void update_and_draw_circles(RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
+    bool have_collided = CheckCollisionCircles(
+                {static_cast<float>(circle_1.center().x), static_cast<float>(circle_1.center().y)},
+                circle_radius,
+                {static_cast<float>(circle_2.center().x), static_cast<float>(circle_2.center().y)},
+                circle_radius);
+
+    if (Collision::has_collided_with_edge(circle_1, screen_width)) {
+        circle_1.change_direction_of_travel();
+    }
+    if (Collision::has_collided_with_edge(circle_2, screen_width)) {
+        circle_2.change_direction_of_travel();
+    }
+
+    if (have_collided) {
+        Collision::simulate_elastic_collision(circle_1, circle_2);
+    }
+
+    int circle_1_new_x_pos = circle_1.center().x + circle_1.direction() * circle_1.velocity();
+    int circle_2_new_x_pos = circle_2.center().x + circle_2.direction() * circle_2.velocity();
+    circle_1.update_circle_center({ circle_1_new_x_pos, circle_1.center().y});
+    circle_2.update_circle_center({ circle_2_new_x_pos, circle_2.center().y});
+
+    DrawCircle(circle_1.center().x, circle_1.center().y, circle_1.radius(), RED);
+    DrawCircle(circle_2.center().x, circle_2.center().y, circle_1.radius(), BLUE);
+}
+
 int main() {
     InitWindow(screen_width, screen_height, "Botsen");
 
@@ -35,30 +62,7 @@ int main() {
         BeginDrawing();
         ClearBackground(WHITE);
 
-        bool have_collided = CheckCollisionCircles(
-                {static_cast<float>(circle_1_pos.x), static_cast<float>(circle_1_pos.y)},
-                circle_radius,
-                {static_cast<float>(circle_2_pos.x), static_cast<float>(circle_2_pos.y)},
-                circle_radius);
-
-        if (Collision::has_collided_with_edge(circle_1, screen_width)) {
-            circle_1.change_direction_of_travel();
-        }
-        if (Collision::has_collided_with_edge(circle_2, screen_width)) {
-            circle_2.change_direction_of_travel();
-        }
-
-        if (have_collided) {
-            Collision::simulate_elastic_collision(circle_1, circle_2);
-        }
-
-        circle_1_pos.x += circle_1.direction() * circle_1.velocity();
-        circle_2_pos.x += circle_2.direction() * circle_2.velocity();
-        circle_1.update_circle_center(circle_1_pos);
-        circle_2.update_circle_center(circle_2_pos);
-
-        DrawCircle(circle_1.center().x, circle_1.center().y, circle_1.radius(), RED);
-        DrawCircle(circle_2.center().x, circle_2.center().y, circle_1.radius(), BLUE);
+        update_and_draw_circles(circle_1, circle_2);
 
         EndDrawing();
     }
