@@ -2,6 +2,7 @@
 
 #include <Collisions.h>
 #include <UI.h>
+#include <GameData.h>
 
 namespace UI {
 
@@ -20,7 +21,17 @@ void update_and_draw_circles(const GameData::Game& active_game, RaylibExt::rayli
     }
 
     if (have_collided) {
-        Collision::simulate_elastic_collision(circle_1, circle_2);
+        switch (active_game.current_collision_type) {
+        case GameData::CollisionType::ELASTIC:
+            Collision::simulate_elastic_collision(circle_1, circle_2);
+            break;
+        case GameData::CollisionType::INELASTIC:
+            Collision::simulate_inelastic_collision(circle_1, circle_2);
+            break;
+        case GameData::CollisionType::TOTALLY_INELASTIC:
+            Collision::simulate_totally_inelastic_collision(circle_1, circle_2);
+            break;
+        }
     }
 
     int circle_1_new_x_pos = circle_1.center().x + circle_1.direction() * circle_1.velocity();
