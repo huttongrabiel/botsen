@@ -18,6 +18,12 @@ void simulate_elastic_collision(RaylibExt::raylibCircleExt& circle_1, RaylibExt:
     }
 }
 
+// TODO: Implement collision simulation
+void simulate_inelastic_collision(RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {}
+
+// TODO: Implement collision simulation
+void simulate_totally_inelastic_collision(RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {}
+
 // Checks if a ball has hit either the left or right edge of the screen
 bool has_collided_with_edge(const RaylibExt::raylibCircleExt& circle, int screen_width) {
     int center_x = circle.center().x;
