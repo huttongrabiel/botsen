@@ -12,6 +12,7 @@
 
 constexpr int circle_radius = 40;
 constexpr int ball_velocity = 5;
+constexpr int circle_mass = 5;
 constexpr int screen_width = 800;
 constexpr int screen_height = 600;
 
@@ -32,8 +33,8 @@ int main() {
     Object::ObjPos circle_2_pos = { screen_width-200, screen_height/2 }; // Right circle
 
     // Circle 1 begins at rest and circle 2 will collide with it putting it in motion
-    RaylibExt::raylibCircleExt circle_1(1, 0, circle_radius, circle_1_pos);
-    RaylibExt::raylibCircleExt circle_2(-1, ball_velocity, circle_radius, circle_2_pos);
+    RaylibExt::raylibCircleExt circle_1(1, 0, circle_radius, circle_mass, circle_1_pos);
+    RaylibExt::raylibCircleExt circle_2(-1, ball_velocity, circle_radius, circle_mass, circle_2_pos);
 
     while (!WindowShouldClose()) {
         BeginDrawing();
