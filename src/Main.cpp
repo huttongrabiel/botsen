@@ -18,7 +18,7 @@ constexpr int screen_height = 600;
 int main() {
     InitWindow(screen_width, screen_height, "Botsen");
 
-    GameData::Game active_game = { screen_width, screen_height, GameData::Scenes::COLLISION };
+    GameData::Game active_game = { screen_width, screen_height, GameData::Scenes::HOME };
 
     SetTargetFPS(60);
 
@@ -39,8 +39,16 @@ int main() {
         BeginDrawing();
         ClearBackground(WHITE);
 
+        if (IsKeyPressed(KEY_SPACE)) {
+            if (active_game.current_scene == GameData::Scenes::HOME)
+                active_game.current_scene = GameData::Scenes::COLLISION;
+            else
+                active_game.current_scene = GameData::Scenes::HOME;
+        }
+
         switch (active_game.current_scene) {
             case GameData::Scenes::HOME:
+                UI::update_and_draw_home(active_game);
                 break;
             case GameData::Scenes::COLLISION:
                 UI::update_and_draw_circles(active_game, circle_1, circle_2);
