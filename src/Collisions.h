@@ -1,6 +1,6 @@
 #pragma once
 
-#include <raylibCircleExt.h>
+#include <RaylibCircleExt.h>
 
 namespace Collision {
 
