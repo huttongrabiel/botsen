@@ -3,8 +3,8 @@
 namespace Collision {
 
 void simulate_elastic_collision(RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
-    int circle_1_velocity = circle_1.velocity();
-    int circle_2_velocity = circle_2.velocity();
+    double circle_1_velocity = circle_1.velocity();
+    double circle_2_velocity = circle_2.velocity();
     int circle_1_dir_travel = circle_1.direction();
     int circle_2_dir_travel = circle_2.direction();
     if (circle_2_velocity > 0) {

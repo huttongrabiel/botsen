@@ -11,7 +11,7 @@
 #include <GameData.h>
 
 constexpr int circle_radius = 40;
-constexpr int ball_velocity = 5;
+constexpr double ball_velocity = 5.0;
 constexpr int circle_mass = 5;
 constexpr int screen_width = 800;
 constexpr int screen_height = 600;
