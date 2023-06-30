@@ -3,24 +3,20 @@
 namespace Collision {
 
 void simulate_elastic_collision(RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
-    double circle_1_velocity = circle_1.velocity();
-    double circle_2_velocity = circle_2.velocity();
-    int circle_1_dir_travel = circle_1.direction();
-    int circle_2_dir_travel = circle_2.direction();
-    if (circle_2_velocity > 0) {
-        circle_1.set_velocity(circle_2_velocity);
-        circle_2.set_velocity(0);
-        circle_1.set_direction_of_travel(circle_2_dir_travel);
-    } else if (circle_1_velocity > 0) {
-        circle_2.set_velocity(circle_1_velocity);
-        circle_1.set_velocity(0);
-        circle_2.set_direction_of_travel(circle_1_dir_travel);
-    }
+    double m1 = circle_1.mass();
+    double m2 = circle_2.mass();
+    double v1i = circle_1.velocity();
+    double v2i = circle_2.velocity();
+
+    // For the math on computing final velocities, see https://www.khanacademy.org/science/physics/linear-momentum/elastic-and-inelastic-collisions/a/what-are-elastic-and-inelastic-collisions
+    double v1f = (((m1 - m2) / (m1 + m2)) * v1i) + (((2 * m2) / (m1 + m2)) * v2i);
+    double v2f = (((2 * m1) / (m1 + m2)) * v1i) + (((m2 - m1) / (m1 + m2)) * v2i);
+
+    circle_1.set_velocity(v1f);
+    circle_2.set_velocity(v2f);
 }
 
-void simulate_inelastic_collision(RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {}
-
-void simulate_totally_inelastic_collision(RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
+void simulate_inelastic_collision(RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
     // We define the objects as being of mass m1 and m2, respectively. With inital velocities of v1i and v2i respectively.
     double m1 = circle_1.mass();
     double m2 = circle_2.mass();
