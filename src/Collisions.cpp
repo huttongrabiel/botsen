@@ -33,16 +33,6 @@ void simulate_totally_inelastic_collision(RaylibExt::raylibCircleExt& circle_1, 
     double denominator = (m1 + m2);
     double final_velocity = numerator / denominator;
 
-    int circle_1_dir_travel = circle_1.direction();
-    int circle_2_dir_travel = circle_2.direction();
-
-    if (v2i > 0) {
-        circle_1.set_direction_of_travel(circle_2_dir_travel);
-    }
-    if (v1i > 0) {
-        circle_2.set_direction_of_travel(circle_1_dir_travel);
-    }
-
     circle_1.set_velocity(final_velocity);
     circle_2.set_velocity(final_velocity);
 }

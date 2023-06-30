@@ -2,8 +2,7 @@
 
 namespace RaylibExt {
 
-raylibCircleExt::raylibCircleExt(int direction_of_travel, int velocity,  int radius, int mass, Object::ObjPos center) :
-    _direction_of_travel(direction_of_travel),
+raylibCircleExt::raylibCircleExt(int velocity,  int radius, int mass, Object::ObjPos center) :
     _velocity(velocity),
     _radius(radius),
     _mass(mass),
@@ -17,10 +16,6 @@ void raylibCircleExt::update_circle_center(Object::ObjPos new_center) {
 
 void raylibCircleExt::set_velocity(double new_velocity) {
     _velocity = new_velocity;
-}
-
-void raylibCircleExt::set_direction_of_travel(int direction) {
-    _direction_of_travel = direction;
 }
 
 void raylibCircleExt::set_mass(int mass) {

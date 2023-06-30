@@ -45,10 +45,10 @@ void update_and_draw_circles(const GameData::Game& active_game, RaylibExt::rayli
                 circle_2.radius());
 
     if (Collision::has_collided_with_edge(circle_1, active_game.screen_width)) {
-        circle_1.change_direction_of_travel();
+        circle_1.negate_velocity();
     }
     if (Collision::has_collided_with_edge(circle_2, active_game.screen_width)) {
-        circle_2.change_direction_of_travel();
+        circle_2.negate_velocity();
     }
 
     if (have_collided) {
@@ -59,14 +59,11 @@ void update_and_draw_circles(const GameData::Game& active_game, RaylibExt::rayli
         case GameData::CollisionType::INELASTIC:
             Collision::simulate_inelastic_collision(circle_1, circle_2);
             break;
-        case GameData::CollisionType::TOTALLY_INELASTIC:
-            Collision::simulate_totally_inelastic_collision(circle_1, circle_2);
-            break;
         }
     }
 
-    int circle_1_new_x_pos = circle_1.center().x + circle_1.direction() * circle_1.velocity();
-    int circle_2_new_x_pos = circle_2.center().x + circle_2.direction() * circle_2.velocity();
+    int circle_1_new_x_pos = circle_1.center().x + circle_1.velocity();
+    int circle_2_new_x_pos = circle_2.center().x + circle_2.velocity();
     circle_1.update_circle_center({ circle_1_new_x_pos, circle_1.center().y});
     circle_2.update_circle_center({ circle_2_new_x_pos, circle_2.center().y});
 
