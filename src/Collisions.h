@@ -14,6 +14,4 @@ void simulate_elastic_collision(RaylibExt::raylibCircleExt& circle_1, RaylibExt:
 
 void simulate_inelastic_collision(RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2);
 
-void simulate_totally_inelastic_collision(RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2);
-
 }

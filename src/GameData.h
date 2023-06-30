@@ -10,7 +10,6 @@ enum class Scenes {
 enum class CollisionType {
     ELASTIC,
     INELASTIC,
-    TOTALLY_INELASTIC
 };
 
 struct Game {

@@ -23,9 +23,6 @@ void update_and_draw_home(const GameData::Game& active_game) {
     case GameData::CollisionType::INELASTIC:
         space_message.append("inelastic");
         break;
-    case GameData::CollisionType::TOTALLY_INELASTIC:
-        space_message.append("totally inelastic");
-        break;
     }
     space_message.append(" collision");
 
