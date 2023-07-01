@@ -40,45 +40,45 @@ void update_and_draw_home(GameData::Game& active_game) {
 }
 
 void draw_collision_select_buttons(GameData::Game& active_game, int title_position_x, int title_position_y) {
-    constexpr int box_width = 120;
-    constexpr int box_height = 60;
-    constexpr int distance_between_boxes = 225;
-    constexpr int box_font_size = 20;
+    constexpr int button_width = 120;
+    constexpr int button_height = 60;
+    constexpr int distance_between_buttons = 225;
+    constexpr int button_font_size = 20;
 
-    Color elastic_box_color = active_game.current_collision_type == GameData::CollisionType::ELASTIC ? PURPLE : DARKPURPLE;
-    Color inelastic_box_color = active_game.current_collision_type == GameData::CollisionType::INELASTIC ? PURPLE : DARKPURPLE;
+    Color elastic_button_color = active_game.current_collision_type == GameData::CollisionType::ELASTIC ? PURPLE : DARKPURPLE;
+    Color inelastic_button_color = active_game.current_collision_type == GameData::CollisionType::INELASTIC ? PURPLE : DARKPURPLE;
 
-    int elastic_box_x_pos = title_position_x;
-    int inelastic_box_x_pos = title_position_x + distance_between_boxes;
-    int box_y_pos = active_game.screen_height - 250;
+    int elastic_button_x_pos = title_position_x;
+    int inelastic_button_x_pos = title_position_x + distance_between_buttons;
+    int button_y_pos = active_game.screen_height - 250;
 
-    int elastic_text_x_pos = title_position_x + (box_width/2) - (MeasureText("Elastic", box_font_size)/2);
-    int inelastic_text_x_pos = title_position_x + distance_between_boxes + (box_width/2) - (MeasureText("Inelastic", box_font_size)/2);
-    int elastic_text_y_pos = box_y_pos + (box_height/2) - 10;
+    int elastic_text_x_pos = title_position_x + (button_width/2) - (MeasureText("Elastic", button_font_size)/2);
+    int inelastic_text_x_pos = title_position_x + distance_between_buttons + (button_width/2) - (MeasureText("Inelastic", button_font_size)/2);
+    int elastic_text_y_pos = button_y_pos + (button_height/2) - 10;
 
     Vector2 mouse_pos = GetMousePosition();
-    bool mouse_in_elastic_box_x = mouse_pos.x >= elastic_box_x_pos && mouse_pos.x <= elastic_box_x_pos + box_width;
-    bool mouse_in_inelastic_box_x = mouse_pos.x >= inelastic_box_x_pos && mouse_pos.x <= inelastic_box_x_pos + box_width;
-    bool mouse_in_box_y = mouse_pos.y >= box_y_pos && mouse_pos.y <= box_y_pos + box_height;
+    bool mouse_in_elastic_button_x = mouse_pos.x >= elastic_button_x_pos && mouse_pos.x <= elastic_button_x_pos + button_width;
+    bool mouse_in_inelastic_button_x = mouse_pos.x >= inelastic_button_x_pos && mouse_pos.x <= inelastic_button_x_pos + button_width;
+    bool mouse_in_button_y = mouse_pos.y >= button_y_pos && mouse_pos.y <= button_y_pos + button_height;
 
-    if (mouse_in_box_y) {
-        if (mouse_in_elastic_box_x) {
-            elastic_box_color = PURPLE;
+    if (mouse_in_button_y) {
+        if (mouse_in_elastic_button_x) {
+            elastic_button_color = PURPLE;
             if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
                 active_game.current_collision_type = GameData::CollisionType::ELASTIC;
             }
-        } else if (mouse_in_inelastic_box_x) {
-            inelastic_box_color = PURPLE;
+        } else if (mouse_in_inelastic_button_x) {
+            inelastic_button_color = PURPLE;
             if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
                 active_game.current_collision_type = GameData::CollisionType::INELASTIC;
             }
         }
     }
 
-    DrawRectangle(elastic_box_x_pos, box_y_pos, box_width, box_height, elastic_box_color);
-    DrawRectangle(inelastic_box_x_pos, box_y_pos, box_width, box_height, inelastic_box_color);
-    DrawText("Elastic", elastic_text_x_pos, elastic_text_y_pos, box_font_size, WHITE);
-    DrawText("Inelastic", inelastic_text_x_pos, elastic_text_y_pos, box_font_size, WHITE);
+    DrawRectangle(elastic_button_x_pos, button_y_pos, button_width, button_height, elastic_button_color);
+    DrawRectangle(inelastic_button_x_pos, button_y_pos, button_width, button_height, inelastic_button_color);
+    DrawText("Elastic", elastic_text_x_pos, elastic_text_y_pos, button_font_size, WHITE);
+    DrawText("Inelastic", inelastic_text_x_pos, elastic_text_y_pos, button_font_size, WHITE);
 }
 
 void update_and_draw_circles(const GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
