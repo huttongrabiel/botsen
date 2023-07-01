@@ -52,8 +52,10 @@ void draw_collision_select_buttons(GameData::Game& active_game, int title_positi
     int inelastic_button_x_pos = title_position_x + distance_between_buttons;
     int button_y_pos = active_game.screen_height - 250;
 
-    int elastic_text_x_pos = title_position_x + (button_width/2) - (MeasureText("Elastic", button_font_size)/2);
-    int inelastic_text_x_pos = title_position_x + distance_between_buttons + (button_width/2) - (MeasureText("Inelastic", button_font_size)/2);
+    const char* elastic_text = "Elastic";
+    const char* inelastic_text = "Inelastic";
+    int elastic_text_x_pos = title_position_x + (button_width/2) - (MeasureText(elastic_text, button_font_size)/2);
+    int inelastic_text_x_pos = title_position_x + distance_between_buttons + (button_width/2) - (MeasureText(inelastic_text, button_font_size)/2);
     int elastic_text_y_pos = button_y_pos + (button_height/2) - 10;
 
     Vector2 mouse_pos = GetMousePosition();
@@ -77,8 +79,8 @@ void draw_collision_select_buttons(GameData::Game& active_game, int title_positi
 
     DrawRectangle(elastic_button_x_pos, button_y_pos, button_width, button_height, elastic_button_color);
     DrawRectangle(inelastic_button_x_pos, button_y_pos, button_width, button_height, inelastic_button_color);
-    DrawText("Elastic", elastic_text_x_pos, elastic_text_y_pos, button_font_size, WHITE);
-    DrawText("Inelastic", inelastic_text_x_pos, elastic_text_y_pos, button_font_size, WHITE);
+    DrawText(elastic_text, elastic_text_x_pos, elastic_text_y_pos, button_font_size, WHITE);
+    DrawText(inelastic_text, inelastic_text_x_pos, elastic_text_y_pos, button_font_size, WHITE);
 }
 
 void update_and_draw_circles(const GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
