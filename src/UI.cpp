@@ -9,6 +9,7 @@
 namespace UI {
 
 void update_and_draw_home(GameData::Game& active_game) {
+    // Draw title and instructions
     const char* title = "Collision Simulator!";
     int title_font_size = 40;
     int title_length = MeasureText(title, title_font_size);
@@ -34,7 +35,7 @@ void update_and_draw_home(GameData::Game& active_game) {
     int space_message_position_y = (active_game.screen_height / 2) - 15;
     DrawText(space_message_c_str, space_message_position_x, space_message_position_y, space_message_font_size, DARKPURPLE);
 
-    // Draw boxes to select either elastic or inelastic collision
+    // Draw buttons to select either elastic or inelastic collision
     draw_collision_select_buttons(active_game, title_position_x, title_position_y);
 }
 
