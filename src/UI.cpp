@@ -1,12 +1,27 @@
 #include <raylib.h>
 #include <string>
+#include <thread>
 
 #include <Collisions.h>
 #include <UI.h>
 #include <GameData.h>
 #include <Object.h>
 
+using namespace std::chrono_literals;
+
 namespace UI {
+
+void reset_game(GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
+    active_game.current_scene = GameData::Scenes::HOME;
+
+    Object::ObjPos circle_1_pos = { active_game.screen_width/2, active_game.screen_height/2 }; // Left circle
+    Object::ObjPos circle_2_pos = { active_game.screen_width-200, active_game.screen_height/2 }; // Right circle
+
+    circle_1.update_circle_center(circle_1_pos);
+    circle_2.update_circle_center(circle_2_pos);
+    circle_1.set_velocity(0);
+    circle_2.set_velocity(-1 * ball_velocity);
+}
 
 void update_and_draw_home(GameData::Game& active_game) {
     // Draw title and instructions
@@ -83,7 +98,12 @@ void draw_collision_select_buttons(GameData::Game& active_game, int title_positi
     DrawText(inelastic_text, inelastic_text_x_pos, elastic_text_y_pos, button_font_size, WHITE);
 }
 
-void update_and_draw_circles(const GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
+void update_and_draw_circles(GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
+    if (!circle_1.velocity() && !circle_2.velocity()) {
+        std::this_thread::sleep_for(2s);
+        reset_game(active_game, circle_1, circle_2);
+    }
+
     bool have_collided = CheckCollisionCircles(
                 {static_cast<float>(circle_1.center().x), static_cast<float>(circle_1.center().y)},
                 circle_1.radius(),
