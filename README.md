@@ -1,3 +1,5 @@
+![Build](https://github.com/huttongrabiel/botsen/actions/workflows/build-test.yaml/badge.svg)
+
 # Botsen
 
 A collision simulator. The collisions are simple. Two balls moving towards
