@@ -22,10 +22,6 @@ int main() {
 
     TraceLogLevel(LOG_ALL);
 
-    std::vector<Object::Object> active_objects;
-
-    // For starting test purposes we will not render custom objects but instead
-    // use raylib's circles
     Object::ObjPos circle_1_pos = { screen_width/2, screen_height/2 }; // Left circle
     Object::ObjPos circle_2_pos = { screen_width-200, screen_height/2 }; // Right circle
 
