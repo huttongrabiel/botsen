@@ -51,15 +51,15 @@ void update_and_draw_home(GameData::Game& active_game) {
     DrawText(space_message_c_str, space_message_position_x, space_message_position_y, space_message_font_size, DARKPURPLE);
 
     // Draw buttons to select either elastic or inelastic collision
-    draw_collision_select_buttons(active_game, title_position_x, title_position_y);
+    _draw_collision_select_buttons(active_game, title_position_x, title_position_y);
 }
 
 void update_and_draw_simulation(GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
-    draw_simulation_text(active_game);
-    update_and_draw_circles(active_game, circle_1, circle_2);
+    _draw_simulation_text(active_game);
+    _update_and_draw_circles(active_game, circle_1, circle_2);
 }
 
-void draw_simulation_text(GameData::Game &active_game) {
+void _draw_simulation_text(GameData::Game &active_game) {
     const char* text = "Press SPACE to return to home screen";
     constexpr int font_size = 25;
     int text_length = MeasureText(text, font_size);
@@ -68,7 +68,7 @@ void draw_simulation_text(GameData::Game &active_game) {
     DrawText(text, text_position_x, text_position_y, font_size, DARKPURPLE);
 }
 
-void draw_collision_select_buttons(GameData::Game& active_game, int title_position_x, int title_position_y) {
+void _draw_collision_select_buttons(GameData::Game& active_game, int title_position_x, int title_position_y) {
     constexpr int button_width = 120;
     constexpr int button_height = 60;
     constexpr int distance_between_buttons = 225;
@@ -112,7 +112,7 @@ void draw_collision_select_buttons(GameData::Game& active_game, int title_positi
     DrawText(inelastic_text, inelastic_text_x_pos, elastic_text_y_pos, button_font_size, WHITE);
 }
 
-void update_and_draw_circles(GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
+void _update_and_draw_circles(GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
     if (!circle_1.velocity() && !circle_2.velocity()) {
         std::this_thread::sleep_for(2s);
         reset_simulation(active_game, circle_1, circle_2);
