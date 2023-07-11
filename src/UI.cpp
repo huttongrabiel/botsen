@@ -32,7 +32,7 @@ void update_and_draw_home(GameData::Game& active_game) {
     int title_position_y = (active_game.screen_height / 2) - 60;
     DrawText("Collision Simulator!", title_position_x, title_position_y, title_font_size, DARKPURPLE);
 
-    std::string space_message = "Press SPACE to simulate ";
+    std::string space_message = "Press SPACE to simulate an ";
     switch (active_game.current_collision_type) {
     case GameData::CollisionType::ELASTIC:
         space_message.append("elastic");
