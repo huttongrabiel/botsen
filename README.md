@@ -1,6 +1,3 @@
-https://github.com/huttongrabiel/botsen/assets/60057590/36903509-43a4-42cc-98d5-c20b1d34c965
-
-
 ![Build](https://github.com/huttongrabiel/botsen/actions/workflows/build-test.yaml/badge.svg)
 
 # Botsen
@@ -22,6 +19,8 @@ cmake ../src
 make -j
 ./Botsen
 ```
+
+https://github.com/huttongrabiel/botsen/assets/60057590/36903509-43a4-42cc-98d5-c20b1d34c965
 
 # TODO
 - [X] Add support for elastic collisions
