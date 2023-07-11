@@ -5,8 +5,13 @@
 
 namespace UI {
 
+// 'Public' methods
 void reset_simulation(GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2);
 void update_and_draw_home(GameData::Game& active_game);
+void update_and_draw_simulation(GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2);
+
+// 'Private' methods
+void draw_simulation_text(GameData::Game& active_game);
 void draw_collision_select_buttons(GameData::Game& active_game, int title_position_x, int title_position_y);
 void update_and_draw_circles(GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2);
 

@@ -45,7 +45,7 @@ int main() {
                 UI::update_and_draw_home(active_game);
                 break;
             case GameData::Scenes::COLLISION:
-                UI::update_and_draw_circles(active_game, circle_1, circle_2);
+                UI::update_and_draw_simulation(active_game, circle_1, circle_2);
         }
 
         EndDrawing();
