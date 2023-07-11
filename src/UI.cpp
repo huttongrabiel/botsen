@@ -11,7 +11,7 @@ using namespace std::chrono_literals;
 
 namespace UI {
 
-void reset_game(GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
+void reset_simulation(GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
     active_game.current_scene = GameData::Scenes::HOME;
 
     Object::ObjPos circle_1_pos = { active_game.screen_width/2, active_game.screen_height/2 }; // Left circle
@@ -101,7 +101,7 @@ void draw_collision_select_buttons(GameData::Game& active_game, int title_positi
 void update_and_draw_circles(GameData::Game& active_game, RaylibExt::raylibCircleExt& circle_1, RaylibExt::raylibCircleExt& circle_2) {
     if (!circle_1.velocity() && !circle_2.velocity()) {
         std::this_thread::sleep_for(2s);
-        reset_game(active_game, circle_1, circle_2);
+        reset_simulation(active_game, circle_1, circle_2);
     }
 
     bool have_collided = CheckCollisionCircles(
